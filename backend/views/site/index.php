@@ -5,7 +5,7 @@
 $this->title = 'ระบบจัดการห้องประชุมออนไลน์  รพ.สารภี';
 ?>
 <div class="site-index">
-    <a href="../../../common/models/Person.php"></a>
+   
     <div class="jumbotron">
         <h1>Congratulations!</h1>
 

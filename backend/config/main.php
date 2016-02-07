@@ -15,6 +15,9 @@ return [
         'personal' => [
             'class' => 'backend\modules\personal\module',
         ],
+        'meeting' => [
+            'class' => 'backend\modules\meeting\module',
+        ],
     ],
     'components' => [
         'user' => [
