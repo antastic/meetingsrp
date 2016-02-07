@@ -96,8 +96,19 @@ class PersonController extends Controller
     {
         $model = $this->findModel($id);
         $user = $model->user;
+        $oldpass = $user->password_hash;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $user->load(Yii::$app->request->post())) {
+            if($oldpass!=$user->password_hash){
+                $user->password_hash = Yii::$app->security->generatePasswordHash($user->password_hash);
+            }
+            if($user->save()){
+                $file=  UploadedFile::getInstance($model, 'person_img');
+                if(isset($file->size)&& $file->size!=0){
+                    $file->saveAs('uploads/person/'.$user->id.'.'.$file->extension);   
+                }
+             $model->save();
+            }
             return $this->redirect(['view', 'id' => $model->user_id]);
         } else {
             return $this->render('update', [

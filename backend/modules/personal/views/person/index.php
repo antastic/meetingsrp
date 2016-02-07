@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
+use common\models\Dep;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\modules\personal\models\PersonSearch */
@@ -19,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
         <p>
-            <?= Html::a('Create Person', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a(' เพิ่มบุคลากร', ['create'], ['class' => 'btn btn-success']) ?>
         </p>
 
         <?=
@@ -28,12 +30,26 @@ $this->params['breadcrumbs'][] = $this->title;
             'filterModel' => $searchModel,
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
-                'user_id',
+                [
+                    'attribute' => 'photo',
+                    'format' => 'html',
+                    'value' => function ($model) {
+                        return Html::img('uploads/person/'.$model->photo,['class' =>'thumbnail','width'=>100]);
+                    }
+                ],
+                'user.username',
+                'user.email',
                 'fname',
                 'lname',
-                'addr:ntext',
+                //'addr:ntext',
                 'tel',
-                // 'dep_id',
+                [
+                    'attribute' => 'dep_id',
+                    'value' => function ($model) {
+                        return $model->dep->dep;
+                    },
+                    'filter' => Html::activeDropDownList($searchModel, 'dep_id', ArrayHelper::map(Dep::find()->all(), 'id', 'dep'), ['class' => 'form-control'])
+                ],
                 // 'photo',
                 ['class' => 'yii\grid\ActionColumn'],
             ],

@@ -17,8 +17,6 @@ $this->params['breadcrumbs'][] = 'แก้ไข';
 
     <div class="box-body">
 
-        <h1><?= Html::encode($this->title) ?></h1>
-
         <?=
         $this->render('_form', [
             'model' => $model,
