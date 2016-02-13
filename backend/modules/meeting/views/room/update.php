@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\meeting\models\Room */
 
-$this->title = 'แก้ไขข้อมูลห้อง: ' . ' ' . $model->id;
+$this->title = 'แก้ไขข้อมูลห้อง: ' . ' ' . $model->room;
 $this->params['breadcrumbs'][] = ['label' => 'จัดการห้อง', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->room, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'แก้ไข';
 ?>
 <div class="box box-info box-solid">

@@ -10,29 +10,34 @@ use kartik\color\ColorInput;
 ?>
 
 <div class="room-form">
-
-    <?php $form = ActiveForm::begin(
-            [
-                'options' => [
-                    'enctype' => 'multipart/form-data'
-                ]
-            ]); ?>
+    <?php
+    $form = ActiveForm::begin(
+                    [
+                        'options' => [
+                            'enctype' => 'multipart/form-data'
+                        ]
+    ]);
+    ?>
 
     <?= $form->field($model, 'room')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'desciption')->textarea(['rows' => 6]) ?>
 
+    <?php if (!$model->isNewRecord) { ?>
+        <?= Html::img('uploads/room/' . $model->photo, ['class' => 'img-responsive thumbnail','width' => 250]) ?>
+    <?php } ?>
     <?= $form->field($model, 'room_img')->fileInput() ?>
 
-    <?= $form->field($model, 'color')->widget(ColorInput::classname(), [
-    'options' => ['placeholder' => 'เลือกสีห้อง'],
-])
-?>
+    <?=
+    $form->field($model, 'color')->widget(ColorInput::classname(), [
+        'options' => ['placeholder' => 'เลือกสีห้อง'],
+    ])
+    ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>
+    <?= Html::submitButton($model->isNewRecord ? 'เพิ่ม' : 'แก้ไข', ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>
     </div>
 
-    <?php ActiveForm::end(); ?>
+<?php ActiveForm::end(); ?>
 
 </div>

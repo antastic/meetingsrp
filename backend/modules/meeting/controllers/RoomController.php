@@ -91,6 +91,11 @@ class RoomController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $file = UploadedFile::getInstance($model, 'room_img');
+            if(isset($file->size) && $file->size!=0){
+                $model->photo = $file->name;
+                $file->saveAs('uploads/room/'.$file->name);
+            }
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

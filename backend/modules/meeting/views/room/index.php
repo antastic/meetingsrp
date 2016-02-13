@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'attribute' => 'color',
                             'format' => 'html',
                             'value' => function ($model){
-                            return '<span style="color:' . $model->color . ';">' . $model->color . '</span>';
+                            return '<span style="background-color:'. $model->color . ';">' .'<span style="color:' . $model->color . ';">' . $model->color . '</span></span>';
                             }
                         ],
                         ['class' => 'yii\grid\ActionColumn'],

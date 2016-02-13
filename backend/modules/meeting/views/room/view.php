@@ -10,11 +10,12 @@ $this->title = $model->room;
 $this->params['breadcrumbs'][] = ['label' => 'ห้องประชุม', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="room-view">
+<div class="box box-info box-solid">
+    <div class="box-header">
+        <h3 class="box-title"><i class="fa fa-home"></i><?= Html::encode($this->title) ?></h3>
+    </div>
 
-    <!--<h1><?= Html::encode($this->title) ?></h1>-->
-
-    <p>
+    <div class="box-body">
         <?= Html::a('แก้ไข', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('ลบ', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
@@ -25,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
     <div class="text-center">
-        <?=Html::img('uploads/room/'.$model->photo, ['class' => 'circle']); ?>
+        <?=Html::img('uploads/room/'.$model->photo, ['class' => 'thumbnail img-responsive']); ?>
     </div>
 
     <?= DetailView::widget([
@@ -39,9 +40,10 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'color',
                 'format' => 'html',
-                'value' => '<span style="color:'.$model->color.';">'.$model->color.'</span>'
+                'value' => '<span style="background-color:'. $model->color . ';">' .'<span style="color:' . $model->color . ';">' . $model->color . '</span></span>'
             ],
         ],
     ]) ?>
 
+</div>
 </div>
