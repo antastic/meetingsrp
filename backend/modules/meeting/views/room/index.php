@@ -28,15 +28,29 @@ $this->params['breadcrumbs'][] = $this->title;
             'filterModel' => $searchModel,
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
-               // 'id',
+                // 'id',
                 'room',
-               // 'desciption:ntext',
-                'photo',
-                'color',
-                ['class' => 'yii\grid\ActionColumn'],
-            ],
-        ]);
-        ?>
+                // 'desciption:ntext',
+                //'photo',
+                [
+                    'attribute' => 'photo',
+                    'format' => 'html',
+                    'value' => function ($model) {
+                        return Html::img('uploads/room/' . $model->photo, ['class' => 'thumbnail', 'width' => 100]);
+                    }
+                        ],
+                        //'color',
+                        [
+                            'attribute' => 'color',
+                            'format' => 'html',
+                            'value' => function ($model){
+                            return '<span style="color:' . $model->color . ';">' . $model->color . '</span>';
+                            }
+                        ],
+                        ['class' => 'yii\grid\ActionColumn'],
+                    ],
+                ]);
+                ?>
 
     </div>
 </div>

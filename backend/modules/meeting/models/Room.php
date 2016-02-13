@@ -51,7 +51,7 @@ class Room extends \yii\db\ActiveRecord
             'desciption' => 'รายละเอียด',
             'photo' => 'รูปห้อง',
             'color' => 'สีห้อง',
-            'room' => 'รูปภาพ',
+            'room_img' => 'รูปภาพ',
         ];
     }
 

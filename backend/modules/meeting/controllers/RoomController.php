@@ -8,6 +8,7 @@ use backend\modules\meeting\models\RoomSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * RoomController implements the CRUD actions for Room model.
@@ -62,7 +63,14 @@ class RoomController extends Controller
     {
         $model = new Room();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) ) {
+            $file = UploadedFile::getInstance($model, 'room_img');
+            
+            if($file->size!=0){
+                $model->photo = $file->name;
+                $file->saveAs('uploads/room/'.$file->name);
+                $model->save();
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -81,7 +89,8 @@ class RoomController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $file = UploadedFile::getInstance($model, 'room_img');
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
