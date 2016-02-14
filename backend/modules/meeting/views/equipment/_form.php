@@ -21,7 +21,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'detail')->textarea(['rows' => 6]) ?>
     <?php if (!$model->isNewRecord) { ?>
-        <?= Html::img('uploads/room/' . $model->photo, ['class' => 'img-responsive thumbnail','width' => 250]) ?>
+        <?= Html::img('uploads/equips/' . $model->photo, ['class' => 'img-responsive thumbnail','width' => 250]) ?>
     <?php } ?>
     <?= $form->field($model, 'equipment_img')->fileInput() ?>
 

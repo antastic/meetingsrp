@@ -30,7 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
             'equipment',
             'detail:ntext',
-            'photo',
+           // 'photo',
+            [
+                'attribute' => 'photo',
+                'format' => 'html',
+                'value' => function ($model){
+                    return Html::img('uploads/equips/'.$model->photo,['class'=>'thumbnail','width' => 125]);
+                }
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

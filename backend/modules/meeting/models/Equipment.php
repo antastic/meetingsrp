@@ -35,7 +35,7 @@ class Equipment extends \yii\db\ActiveRecord
             [['equipment', 'detail', 'photo'], 'required'],
             [['detail'], 'string'],
             [['equipment', 'photo'], 'string', 'max' => 100],
-            [['equipment_img'],'file','skipOnEmpty'=>true,'on'=>'update','extensions'=>'jpg,png,gif']
+            [['equipment_img'],'file','skipOnEmpty'=>true,'on'=>'update','extensions'=>'jpg,png,gif'],
         ];
     }
 
