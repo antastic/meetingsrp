@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
+use backend\modules\meeting\models\Room;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\modules\meeting\models\RoomSearch */
@@ -45,7 +47,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             'format' => 'html',
                             'value' => function ($model){
                             return '<span style="background-color:'. $model->color . ';">' .'<span style="color:' . $model->color . ';">' . $model->color . '</span></span>';
-                            }
+                            },
+                                    'filter' => Html::activeDropDownList($searchModel, 'color', ArrayHelper::map(Room::find()->all(), 'color', 'color'), ['class' => 'form-control'])
                         ],
                         ['class' => 'yii\grid\ActionColumn'],
                     ],

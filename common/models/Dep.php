@@ -9,7 +9,6 @@ use Yii;
  *
  * @property integer $id
  * @property string $dep
- * @property string $depcol
  *
  * @property Person[] $people
  */
@@ -29,9 +28,7 @@ class Dep extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'depcol'], 'required'],
-            [['id'], 'integer'],
-            [['dep', 'depcol'], 'string', 'max' => 45]
+            [['dep'], 'string', 'max' => 45]
         ];
     }
 
@@ -42,8 +39,7 @@ class Dep extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'dep' => 'Dep',
-            'depcol' => 'Depcol',
+            'dep' => 'แผนก',
         ];
     }
 
